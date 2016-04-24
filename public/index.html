@@ -11,13 +11,22 @@
 <body>
 	<div class="container" ng-controller="student">
 		<h1>All of our students</h1>
-		<ul ng-repeat="student in studentlist">
-			<li> {{student.name}}</li>
-			<li> {{student.shortabout}}</li>
-			<li> {{student.lastdegree}}</li>
-			<li> {{student.currentprogram}}</li>
-			<li> {{student.desiredcompany}}</li>
+		<input ng-model="student.name" class="form-control"></input>
+		<textarea rows="4" cols="50" ng-model="student.shortabout" class="form-control"></textarea>
+		<input ng-model="student.lastdegree" class="form-control"></input>
+		<input ng-model="student.currentprogram" class="form-control"></input>
+		<input ng-model="student.desiredcompany" class="form-control"></input>
+		<button class="btn btn-primary" ng-click="addStudent()">ADD NEW STUDENT</button>
 
+
+
+		<ul ng-repeat="student in studentlist">
+			<li> {{student.name}} </li>
+			<li> {{student.shortabout}} </li>
+			<li> {{student.lastdegree}} </li>
+			<li> {{student.currentprogram}} </li>
+			<li> {{student.desiredcompany}} </li>
+			<button class="btn btn-danger" ng-click="remove(student._id)">Remove Me</button>
 		</ul>
 			
 	</div>
