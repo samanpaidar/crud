@@ -20,6 +20,9 @@ studensP.controller('student', ['$scope', '$http', function($scope, $http) {
     };
     $scope.remove = function (id) {
     	console.log(id);
+    	$http.delete('/studentlist/'+ id).success(function (response) {
+    		refresh();
+    	});
     };
     
 }]);
