@@ -36,4 +36,7 @@ studensP.controller('student', ['$scope', '$http', function($scope, $http) {
     		refresh();
     	});
     };
+    $scope.regret = function () {
+    	$scope.student="";
+    }
 }]);
