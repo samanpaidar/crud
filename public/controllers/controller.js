@@ -24,5 +24,16 @@ studensP.controller('student', ['$scope', '$http', function($scope, $http) {
     		refresh();
     	});
     };
-    
+    $scope.edit = function (id) {
+    	console.log(id);
+    	$http.get('/studentlist/' + id).success(function (response) {
+    		$scope.student = response;
+    	});
+    };
+    $scope.update = function (argument) {
+    	console.log($scope.student._id);
+    	$http.put('/studentlist/'+$scope.student._id, $scope.student).success(function (response) {
+    		refresh();
+    	});
+    };
 }]);

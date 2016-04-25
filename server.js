@@ -28,5 +28,27 @@ app.delete('/studentlist/:id', function (req , res) {
 		res.json(doc);
 	});
 });
+app.get('/studentlist/:id',function (req , res) {
+	var id =req.params.id;
+	console.log(id);
+	db.studentlist.findOne({_id: mongojs.ObjectId(id)},function (err,doc) {
+		res.json(doc);
+	});
+});
+app.put('/studentlist/:id',function (req , res) {
+	var id =req.params.id;
+	console.log(req.body.name);
+	db.studentlist.findAndModify({	query:{_id: mongojs.ObjectId(id)},
+									update:{$set:{	name:req.body.name,
+													shortabout:req.body.shortabout,
+													lastdegree:req.body.lastdegree,
+													currentprogram:req.body.currentprogram,
+													desiredcompany:req.body.desiredcompany}},
+									new:true},function (err,doc) {
+												res.json(doc);
+												
+												});
+
+});
 app.listen(3000);
 console.log('server is running on port 3000');

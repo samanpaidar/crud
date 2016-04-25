@@ -17,7 +17,7 @@
 		<input ng-model="student.currentprogram" class="form-control"></input>
 		<input ng-model="student.desiredcompany" class="form-control"></input>
 		<button class="btn btn-primary" ng-click="addStudent()">ADD NEW STUDENT</button>
-
+		<button class="btn btn-info" ng-click="update()">Update</button>
 
 
 		<ul ng-repeat="student in studentlist">
@@ -27,6 +27,7 @@
 			<li> {{student.currentprogram}} </li>
 			<li> {{student.desiredcompany}} </li>
 			<button class="btn btn-danger" ng-click="remove(student._id)">Remove Me</button>
+			<button class="btn btn-warning" ng-click="edit(student._id)">Edit</button>
 		</ul>
 			
 	</div>
