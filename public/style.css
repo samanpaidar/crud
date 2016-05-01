@@ -1,0 +1,19 @@
+body{
+	font-family: Arial,Geneva,sans-serif;}
+div{font-size: 20px}
+input,textarea{
+	border:1px solid #f0f0f5;border-radius: 5px;}
+ul{list-style: none}
+button{border-radius: 5px;
+	border: none;color: white;font-style: bold
+}
+.add{width: 150px;height: 30px;background: #007acc}
+.clear{background-color:#33DFFF;height: 30px;width: 90px }
+.update{
+background-color:#FF6933 ;
+width: 90px;
+height: 30px}
+.remove{
+background-color:red;
+height: 30px;
+width: 90px; }
