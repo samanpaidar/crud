@@ -2,8 +2,8 @@
 <html ng-app="studensP">
 <head>
 	<title>student portal</title>
-	
-<link rel="stylesheet" type="text/css" href="style.css">
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
 	<div class="container" ng-controller="student">
@@ -37,7 +37,14 @@
 		
 
 		<h3>Alla praktik sökande studenter </h3>
-		<table ng-repeat="student in studentlist">
+		<input ng-model="q" placeholder="Sök"></input>
+		<label>Snabb filter:
+		<select ng-model="ordning">
+			<option value="lastdegree">Utbildningsnivå</option>
+			<option value="desiredcompany">Önskade företag</option>
+		</select>
+		</label>
+		<table ng-repeat="student in studentlist | filter:q | orderBy:ordning">
 			<tr> <td>För och efter namn:</td><td>{{student.name}} </td></tr>
 			<tr> <td>Utbildningsnivå:</td><td>{{student.lastdegree}} </td></tr>
 			<tr> <td>Inriktning:</td><td>{{student.currentprogram}} </td></tr>
