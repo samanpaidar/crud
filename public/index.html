@@ -1,61 +1,70 @@
 <!DOCTYPE html>
 <html ng-app="studensP">
-<head>
-	<title>student portal</title>
-	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="style.css">
-</head>
-<body>
-	<div class="container" ng-controller="student">
-		<h1>Vi hjälper att hitta LIA plats</h1>
-		<h2>Registerera studenter som vill få hjälp i vår databas</h2>
-		<table>
-		<tr>
-		<td><label for="name">För och efter namn</label></td>
-		<td><input ng-model="student.name" class="form-control"></input></td>
-		<td><button class="update" ng-click="update()">Updatera</button></td>
-		<td><button class="clear" ng-click="regret()">Ångrat!</button></td>
-		</tr>
-		<tr>
-		<td><label for="Utbildningsnivå">Utbildningsnivå</label></td>
-		<td><input ng-model="student.lastdegree" class="form-control"></input></td>
-		</tr>
-		<tr>
-		<td><label for="Inriktning">Inriktning</label></td>
-		<td><input ng-model="student.currentprogram" class="form-control"></input></td>
-		</tr>
-		<tr>
-		<td><label for="företag">Önskade företag </label></td>
-		<td><input ng-model="student.desiredcompany" class="form-control"></input></td>
-		</tr>
-		<tr>
-		<td><label for="presentation">Kort presentation:</label></td>
-		<td><textarea rows="4" cols="50" ng-model="student.shortabout" class="form-control"></textarea></td>
-		</tr></table>
-		<button class="add" ng-click="addStudent()">Lägg till</button>
+	<head>
+		<title>student portal</title>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="style.css">
+	</head>
+	<body>
+		<!--controller div-->
+		<div class="container" ng-controller="student">
+			<h1>Vi hjälper att hitta LIA plats</h1>
+			<h2>Registerera studenter som vill få hjälp i vår databas</h2>
+			<table>
+			<tr>
+			<td><label for="name">För och efter namn</label></td>
+			<td><input ng-model="student.name" autofocus required></input></td>
+			<!-- buttons are here for the style-->
+			<td><button class="update" ng-click="update()">Updatera</button></td>
+			<!--clear button-->
+			<td><button class="clear" ng-click="regret()">Ångrat!</button></td>
+			</tr>
+			<tr>
+			<td><label for="Utbildningsnivå">Utbildningsnivå</label></td>
+			<td><input ng-model="student.lastdegree"></input></td>
+			</tr>
+			<tr>
+			<td><label for="Inriktning">Inriktning</label></td>
+			<td><input ng-model="student.currentprogram"></input></td>
+			</tr>
+			<tr>
+			<td><label for="företag">Önskade företag </label></td>
+			<td><input ng-model="student.desiredcompany"></input></td>
+			</tr>
+			<tr>
+			<td><label for="presentation">Kort presentation:</label></td>
+			<td><textarea rows="4" cols="50" ng-model="student.shortabout" ></textarea></td>
+			</tr></table>
+		
+			<!--Create button-->
+			<button class="add" ng-click="addStudent()">Lägg till</button>
 		
 		
 
-		<h3>Alla praktik sökande studenter </h3>
-		<input ng-model="q" placeholder="Sök"></input>
-		<label>Snabb filter:
-		<select ng-model="ordning">
-			<option value="lastdegree">Utbildningsnivå</option>
-			<option value="desiredcompany">Önskade företag</option>
-		</select>
-		</label>
-		<table ng-repeat="student in studentlist | filter:q | orderBy:ordning">
+			<h3>Alla praktik sökande studenter </h3>
+			<input ng-model="q" placeholder="Sök"></input>
+			<label>Snabb filter:
+			<select ng-model="ordning">
+				<option value="lastdegree">Utbildningsnivå</option>
+				<option value="desiredcompany">Önskade företag</option>
+			</select>
+			</label>
+			<!--applied two search filter for the loop-->
+			<table ng-repeat="student in studentlist | filter:q | orderBy:ordning">
 			<tr> <td>För och efter namn:</td><td>{{student.name}} </td></tr>
 			<tr> <td>Utbildningsnivå:</td><td>{{student.lastdegree}} </td></tr>
 			<tr> <td>Inriktning:</td><td>{{student.currentprogram}} </td></tr>
 			<tr> <td>Önskade företag:</td><td>{{student.desiredcompany}} </td></tr>
 			<tr> <td>Kort presentation:</td><td>{{student.shortabout}} </td></tr>
+			<!--shows the date that you register the student-->		
+			<tr> <td>Registered on:</td><td>{{student.created | date}} </td></tr>
 			<tr><td><button class="remove" ng-click="remove(student._id)">Ta bort</button></td>
 			<td><button class="update" ng-click="edit(student._id)">Edit</button></td></tr>
-		</table>
+			</table>
 			
-	</div>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
-<script src="controllers/controller.js"></script>
-</body>
+		</div>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+		<script src="https://code.angularjs.org/1.5.5/angular-route.min.js"></script>
+		<script src="controllers/controller.js"></script>
+	</body>
 </html>
